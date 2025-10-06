@@ -13,17 +13,38 @@ export default function App() {
   var totalGradeScores = 0;
   
   function clickMe(){
+    let totalGradeScores = 0;
     alert("this is the click me button"); //alert for web
     Alert.alert("this is the click me button"); //alert for phone
     //get the studnet's gradePointsfor SSWD, multiply it by the credits 
     //add the result to totalGradeScores as an accumulator variable (e.g. tgs=tgs+sswd)
+    const sswd_gradeInput = sswd.toUpperCase();
+    let sswdGradePoint = gradePoints[sswd_gradeInput];
 
+    
+
+    const sswd_weightedScore = sswdGradePoint * credits;            
+    totalGradeScores = totalGradeScores + sswd_weightedScore;  
+
+    
     
     //get the student's gradePointsfor Ob, multiply it by the credits
     //add the result to totalGradeScores as an accumulator variable (e.g. tgs=tgs+ob)
+    const ob_gradeInput = ob.toUpperCase();
+    let obGradePoint = gradePoints[ob_gradeInput];
+
    
+
+    const ob_weightedScore = obGradePoint * credits;            
+    totalGradeScores = totalGradeScores + ob_weightedScore;  
+
+   
+
+
     //calculate the gpa as the totalsGradeScores divided by the totalPossibleCredits
     //Output the calculated GPA result to the user using an alert (you must concatenate the gpa)
+    gpa = totalGradeScores / totalPossibleCredits;
+    Alert.alert("Your GPA is: " + gpa.toFixed(2));
   }
 
 
@@ -31,12 +52,12 @@ return (
     <SafeAreaView>
       <View><Text style={{flexDirection: "row", fontWeight: "bold", fontSize: 24, textAlign:"center", marginTop: "%10"}}>GPA Calculator</Text></View>
       <View>
-        <Text>Maths</Text>
+        <Text>SSWD</Text>
         <TextInput  placeholder="Grade" onChangeText={setSswd}/>
       </View>
       <View >
         <Text>Organisational Behaviour</Text>
-        <TextInput placeholder="Grade" onChangeText={setOb)}/>
+        <TextInput placeholder="Grade" onChangeText={setOb}/>
       </View>
       <View >
         <Button title="submit" onPress={clickMe}/>
@@ -44,4 +65,3 @@ return (
     </SafeAreaView>
   );
 }
-
