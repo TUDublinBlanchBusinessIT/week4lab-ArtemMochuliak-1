@@ -47,21 +47,59 @@ export default function App() {
     Alert.alert("Your GPA is: " + gpa.toFixed(2));
   }
 
-
+  const styles = StyleSheet.create({
+    container: {
+      padding: "5%",               
+    },
+    row: {
+      flexDirection: 'row',       
+      alignItems: 'center',       
+      marginBottom: "5%",        
+    },
+    label: {
+      flex: 1,                    
+      marginRight: "5%",          
+      fontWeight: 'bold',        
+    },
+    textInput: {
+      flex: 1,                    
+      borderWidth: 1,             
+      borderColor: '#ccc',       
+      padding: 10,                
+      borderRadius: 5,            
+    }
+  });
 return (
-    <SafeAreaView>
-      <View><Text style={{flexDirection: "row", fontWeight: "bold", fontSize: 24, textAlign:"center", marginTop: "%10"}}>GPA Calculator</Text></View>
-      <View>
-        <Text>SSWD</Text>
-        <TextInput  placeholder="Grade" onChangeText={setSswd}/>
-      </View>
-      <View >
-        <Text>Organisational Behaviour</Text>
-        <TextInput placeholder="Grade" onChangeText={setOb}/>
-      </View>
-      <View >
-        <Button title="submit" onPress={clickMe}/>
-      </View>
-    </SafeAreaView>
+   <SafeAreaView style={styles.container}>
+    <View>
+      <Text style={{fontWeight: "bold", fontSize: 24, textAlign:"center", marginBottom: "10%"}}>GPA Calculator</Text>
+    </View>
+
+    <View style={styles.row}>
+      <Text style={styles.label}>SSWD</Text>
+      <TextInput  
+        style={styles.textInput}
+        placeholder="Grade" 
+        onChangeText={setSswd}
+        autoCapitalize="characters" 
+        maxLength={2}                
+      />
+    </View>
+
+    <View style={styles.row}>
+      <Text style={styles.label}>Organisational Behaviour</Text>
+      <TextInput 
+        style={styles.textInput}
+        placeholder="Grade" 
+        onChangeText={setOb}
+        autoCapitalize="characters"
+        maxLength={2}
+      />
+    </View>
+
+    <View style={{marginTop: "5%"}}>
+      <Button title="submit" onPress={clickMe}/>
+    </View>
+  </SafeAreaView>
   );
 }
