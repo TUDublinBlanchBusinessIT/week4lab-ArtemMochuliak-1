@@ -7,9 +7,15 @@ export default function App() {
   const [sswd, setSswd] = useState('D');
   const [ob, setOb] = useState('D');
   
+
+  const [mobileApps, setMobileApps] = useState('D');
+  const [digitalMarketing, setDigitalMarketing] = useState('D');
+  const [oooad, setOooad] = useState('D');
+  const [financialManagement, setFinancialManagement] = useState('D');
+
   var gpa=0;
   var credits=5;
-  var totalPossibleCredits = 10;
+  var totalPossibleCredits = 30;
   var totalGradeScores = 0;
   
   function clickMe(){
@@ -27,6 +33,33 @@ export default function App() {
     totalGradeScores = totalGradeScores + sswd_weightedScore;  
 
     
+
+    const mobileAppsGradePoint = gradePoints[mobileApps.toUpperCase()]
+    
+    const mobileapps_weightedScore = mobileAppsGradePoint * credits;    
+    totalGradeScores = totalGradeScores + mobileapps_weightedScore
+
+    const digitalMarketingGradePoint = gradePoints[digitalMarketing.toUpperCase()]
+
+    const marketing_weightedScore = digitalMarketingGradePoint  * credits;    
+    totalGradeScores = totalGradeScores + marketing_weightedScore
+
+
+    const oooadGradePoint = gradePoints[oooad.toUpperCase()]
+
+    const oooad_weightedScore = oooadGradePoint  * credits;    
+    totalGradeScores = totalGradeScores + oooad_weightedScore
+    
+
+    const financialManagementGradePoint = gradePoints[financialManagement.toUpperCase()]
+
+    const financialManagement_weightedScore =  financialManagementGradePoint  * credits;    
+    totalGradeScores = totalGradeScores + financialManagement_weightedScore
+
+  
+
+    
+    
     
     //get the student's gradePointsfor Ob, multiply it by the credits
     //add the result to totalGradeScores as an accumulator variable (e.g. tgs=tgs+ob)
@@ -39,6 +72,8 @@ export default function App() {
     totalGradeScores = totalGradeScores + ob_weightedScore;  
 
    
+
+
 
 
     //calculate the gpa as the totalsGradeScores divided by the totalPossibleCredits
@@ -97,7 +132,53 @@ return (
       />
     </View>
 
-    <View style={{marginTop: "5%"}}>
+    
+
+    <View style={styles.row}>
+  <Text style={styles.label}>Mobile Apps</Text>
+  <TextInput
+    style={styles.textInput}
+    placeholder="Grade"
+    onChangeText={setMobileApps}
+    autoCapitalize="characters"
+    maxLength={2}
+  />
+</View>
+
+<View style={styles.row}>
+  <Text style={styles.label}>Digital Marketing</Text>
+  <TextInput
+    style={styles.textInput}
+    placeholder="Grade"
+    onChangeText={setDigitalMarketing}
+    autoCapitalize="characters"
+    maxLength={2}
+  />
+</View>
+
+<View style={styles.row}>
+  <Text style={styles.label}>OOAD</Text>
+  <TextInput
+    style={styles.textInput}
+    placeholder="Grade"
+    onChangeText={setOooad}
+    autoCapitalize="characters"
+    maxLength={2}
+  />
+</View>
+
+<View style={styles.row}>
+  <Text style={styles.label}>Financial Management</Text>
+  <TextInput
+    style={styles.textInput}
+    placeholder="Grade"
+    onChangeText={setFinancialManagement}
+    autoCapitalize="characters"
+    maxLength={2}
+  />
+</View>
+
+<View style={{marginTop: "5%"}}>
       <Button title="submit" onPress={clickMe}/>
     </View>
   </SafeAreaView>
